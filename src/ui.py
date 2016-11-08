@@ -75,7 +75,7 @@ def toggleable_buffer(nvim, buf_id, create_new_fn, **kwargs):
     win_nr = nvim.funcs.bufwinnr(buf_id)
 
     if win_nr == -1:
-        if bufname(buf_id) == "":
+        if nvim.funcs.bufname(buf_id) == "":
             create_new_fn()
         else:
             nvim.command('{} | b {}'.format(orientation, buf_id))
