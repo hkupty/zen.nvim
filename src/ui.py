@@ -12,9 +12,9 @@ class EmptyPromptError(Exception):
     pass
 
 
-def prompt(nvim):
+def prompt(nvim, label):
     nvim.command("inputsave")
-    ret = nvim.command_output("input", "iron> {}: ".format(msg))
+    ret = nvim.command_output("input", "{} ".format(label))
     nvim.command("inputrestore")
 
     if not ret:
