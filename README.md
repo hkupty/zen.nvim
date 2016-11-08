@@ -15,4 +15,7 @@ One can do so in several ways:
 
 ### Using as submodule
 
-Simply `git submodule add 
+Simply `git submodule add https://github.com/hkupty/zen.nvim.git` to your app.
+
+It is recommended that you checkout a version branch so you'll ensure
+compatibility if zen gets updated.
