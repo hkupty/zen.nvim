@@ -72,7 +72,7 @@ def build_window(nvim, **kwargs):
 
 def toggleable_buffer(nvim, buf_id, create_new_fn, **kwargs):
     orientation = kwargs.get('orientation', 'vertical split')
-    win_nr = nvin.funcs.bufwinnr(buf_id)
+    win_nr = nvim.funcs.bufwinnr(buf_id)
 
     if win_nr == -1:
         if bufname(buf_id) == "":
