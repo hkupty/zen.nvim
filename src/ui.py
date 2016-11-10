@@ -57,7 +57,7 @@ def build_window(nvim, **kwargs):
     cmds = [orientation, "enew"]
 
     if 'close' in kwargs:
-        cmds.append('nmap <buffer> q :bd! %<CR>')
+        cmds.append('nmap <buffer> <silent> q :bd! %<CR>')
 
     if 'commands' in kwargs:
         cmds.extend(kwargs['commands'])
