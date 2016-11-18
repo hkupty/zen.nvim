@@ -13,9 +13,9 @@ class EmptyPromptError(Exception):
 
 
 def prompt(nvim, label):
-    nvim.command("inputsave")
-    ret = nvim.command_output("input", "{} ".format(label))
-    nvim.command("inputrestore")
+    nvim.call("inputsave")
+    ret = nvim.call("input", "{} ".format(label))
+    nvim.call("inputrestore")
 
     if not ret:
         raise EmptyPromptError(msg)
