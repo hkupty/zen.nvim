@@ -69,6 +69,13 @@ def build_window(nvim, **kwargs):
     else:
         return nvim.funcs.bufnr('$')
 
+def open_term(nvim, cmd, **kwargs):
+    "Open a new term an focus on it."
+    ret = nvim.call('termopen', cmd)
+    if ret > 0:
+        nvim.command('startinsert')
+    return ret
+
 
 def toggleable_buffer(nvim, buf_id, create_new_fn, **kwargs):
     orientation = kwargs.get('orientation', 'vertical split')
