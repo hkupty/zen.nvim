@@ -1,6 +1,16 @@
 # zen.nvim
 A simple nvim ui framework for python
 
+## Motivation
+
+This framework intends to provide a range of functions to allow remote plugins
+interact visually with neovim.
+
+Whether you want to create a new window, prompt the user for some input or
+toggle the visibility of a buffer, zen will provide a function for that, so you
+can focus solely on the functionality, removing the window/buffer management
+hassle from your code.
+
 ## Using this framework
 
 While this is a simple python module that expects you to have neovim installed,
