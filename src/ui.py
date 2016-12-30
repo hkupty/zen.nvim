@@ -78,9 +78,10 @@ def build_window(nvim, **kwargs):
 
 def open_term(nvim, cmd, **kwargs):
     "Open a new term an focus on it."
+    wnr = nvim.call('winnr', '$')
     ret = nvim.call('termopen', cmd)
     if ret > 0:
-        nvim.command('startinsert')
+        nvim.command('{}wincmd w | startinsert'.format(wnr))
     return ret
 
 
