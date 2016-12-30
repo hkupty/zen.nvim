@@ -5,6 +5,7 @@ This is a pretty straightforward ui framework for neovim.
 This allows standardizations and quick handling of common ui elements
 The idea of this framework is to provide common solutions without hassle.
 """
+from zen.string import produce_select_options
 
 
 class EmptyPromptError(Exception):
@@ -40,13 +41,19 @@ def selection_window(nvim, **options):
 
     select_options = options["select_options"]
 
+    if not 'no_quit' in options:
+        select_options.append(('q', 'quit', ':bd! %<CR>'))
+
+    compiled_select_options = produce_select_options(select_options)
+
     [nvim.command(i) for i in [
-        "map <buffer> {} {}".format(k, c) for k, _, c in select_options
+        "map <buffer> <silent> {} {}".format(k, c)
+        for k, _, c in compiled_select_options
     ]]
 
 
     text = ["Select an option below:", ""] + [
-        "    ({}) {}".format(k, t) for k, t, _ in select_options
+        "    ({}) {}".format(k, t) for k, t, _ in compiled_select_options
     ]
 
     sw_buf.append(text)
