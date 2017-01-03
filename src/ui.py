@@ -42,7 +42,7 @@ def selection_window(nvim, **options):
     select_options = options["select_options"]
 
     if not 'no_quit' in options:
-        select_options.append(('q', 'quit', ':bd! %<CR>'))
+        select_options['quit'] = ':bd! %<CR>'
 
     compiled_select_options = produce_select_options(select_options)
 
