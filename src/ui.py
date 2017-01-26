@@ -5,7 +5,7 @@ This is a pretty straightforward ui framework for neovim.
 This allows standardizations and quick handling of common ui elements
 The idea of this framework is to provide common solutions without hassle.
 """
-from zen.string import produce_select_options
+from .string import produce_select_options
 
 
 class EmptyPromptError(Exception):
