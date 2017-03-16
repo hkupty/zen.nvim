@@ -69,12 +69,8 @@ def build_window(nvim, **kwargs):
     if 'commands' in kwargs:
         cmds.extend(kwargs['commands'])
 
-    try:
-        nvim.command('|'.join(cmds))
-    except:
-        return None
-    else:
-        return nvim.funcs.bufnr('$')
+    nvim.command('|'.join(cmds))
+    return nvim.funcs.bufnr('$')
 
 def open_term(nvim, cmd, **kwargs):
     "Open a new term an focus on it."
