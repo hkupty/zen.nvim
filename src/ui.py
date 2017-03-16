@@ -7,6 +7,7 @@ The idea of this framework is to provide common solutions without hassle.
 """
 from .string import produce_select_options
 
+throwaway = 'setlocal nolist nobuflisted buftype=nofile bufhidden=wipe'
 
 class EmptyPromptError(Exception):
     """ User aborted prompt. """
@@ -33,6 +34,7 @@ def selection_window(nvim, **options):
     size = min(size, 15)
 
     nvim.command("botright {} spl | enew".format(size))
+    nvim.command(throwaway)
     buf_id = nvim.call("bufnr", "$")
     sw_buf = nvim.buffers[buf_id]
 
@@ -65,6 +67,9 @@ def build_window(nvim, **kwargs):
 
     if 'close' in kwargs:
         cmds.append('nmap <buffer> <silent> q :bd! %<CR>')
+
+    if 'throwaway' in kwargs:
+        cmds.append(throwaway)
 
     if 'commands' in kwargs:
         cmds.extend(kwargs['commands'])
