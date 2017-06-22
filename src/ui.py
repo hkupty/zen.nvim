@@ -7,7 +7,7 @@ The idea of this framework is to provide common solutions without hassle.
 """
 from .string import produce_select_options
 
-throwaway = 'setlocal nolist nobuflisted buftype=nofile bufhidden=wipe'
+throwaway = 'setlocal nobuflisted buftype=nofile bufhidden=wipe'
 
 class EmptyPromptError(Exception):
     """ User aborted prompt. """
